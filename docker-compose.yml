@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: fastapi_container
+
+    ports:
+      - "8085:8000"
+    environment:
+      - CORS_ALLOWED_ORIGINS=https://redir.know-me.ir,http://localhost:3000
+    command: >
+      uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
