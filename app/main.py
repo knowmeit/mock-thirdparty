@@ -12,7 +12,6 @@ from typing import Optional
 from app.schemas import TakeResultResponse, SessionRequest
 
 from utils import sign_session
-
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
