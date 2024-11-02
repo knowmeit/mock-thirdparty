@@ -44,11 +44,11 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         }
     )
 
-@app.post("/take-result")
+@app.post("/take_result")
 async def take_result(data: TakeResultResponse):
-    if data.attributes and data.attributes.similarity is not None:
-        if not (0 <= data.attributes.similarity <= 1):
-            raise HTTPException(status_code=400, detail="Similarity must be between 0 and 1")
+    # if data and data.similarity is not None:
+    #     if not (0 <= data.attributes.similarity <= 1):
+    #         raise HTTPException(status_code=400, detail="Similarity must be between 0 and 1")
 
     print(f"Received data from callback: {data.model_dump()}")
 
