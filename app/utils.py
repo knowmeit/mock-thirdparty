@@ -29,7 +29,7 @@ def sign_session(national_code: str, birthdate: str, callback_url: str):
         "national_code": str(national_code),
         "birthdate": int(birthdate_gmt.timestamp()),
         "timestamp": int(datetime.now().timestamp()),
-        "callback": callback_url
+        "callback": str(callback_url)
     }
 
     payload_json = json.dumps(payload).encode()
