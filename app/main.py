@@ -1,6 +1,7 @@
 import logging
 import os
 
+import requests
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
