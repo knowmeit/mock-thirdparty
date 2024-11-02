@@ -9,6 +9,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from typing import Optional
 
+from requests import Timeout, RequestException
+
 from app.schemas import TakeResultResponse, SessionRequest
 
 from app.utils import sign_session
