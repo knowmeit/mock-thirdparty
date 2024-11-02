@@ -11,6 +11,8 @@ services:
     ports:
       - "8086:8000"
     environment:
+      - PRIVATE_KEY_PATH=/app/app/conf/private_key.pem
       - CORS_ALLOWED_ORIGINS=https://redir.know-me.ir,http://localhost:3000
+      - FACE_SERVER_URL=https://api.know-me.ir
     command: >
       uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
