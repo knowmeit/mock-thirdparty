@@ -9,7 +9,7 @@ services:
     container_name: fastapi_container
 
     ports:
-      - "8085:8000"
+      - "8086:8000"
     environment:
       - CORS_ALLOWED_ORIGINS=https://redir.know-me.ir,http://localhost:3000
     command: >
