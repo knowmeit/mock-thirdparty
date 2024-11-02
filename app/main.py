@@ -62,7 +62,11 @@ async def create_session(request: SessionRequest, http_request: Request):
             raise HTTPException(status_code=400, detail="SERVICE-ID header is missing.")
 
         # Prepare and sign payload
-        signed_payload = sign_session(request.national_code, request.birthdate)
+        signed_payload = sign_session(
+            request.national_code,
+            request.birthdate,
+            "https://redir.know-me.ir/take_result"
+        )
         logger.debug(f"Signed payload: {signed_payload}")
 
         # Define request data and headers
