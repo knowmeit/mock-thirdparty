@@ -67,6 +67,7 @@ async def create_session(request: SessionRequest, http_request: Request):
         signed_payload = sign_session(
             national_code=request.national_code,
             birthdate=request.birthdate,
+            redirect_to="https://sandbox.know-me.ir/",
             callback_url="https://redir.know-me.ir/take_result"
         )
         logger.debug(f"Signed payload: {signed_payload}")

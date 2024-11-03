@@ -12,7 +12,10 @@ with open(private_key_path, 'rb') as file:
     private_key = serialization.load_pem_private_key(file.read(), password=None)
 
 
-def sign_session(national_code: str, birthdate: str, callback_url: str):
+def sign_session(national_code: str,
+                 birthdate: str,
+                 redirect_to: str,
+                 callback_url: str):
     # Define the GMT time zone
     gmt_tz = pytz.timezone('GMT')
 
@@ -29,6 +32,7 @@ def sign_session(national_code: str, birthdate: str, callback_url: str):
         "national_code": str(national_code),
         "birthdate": int(birthdate_gmt.timestamp()),
         "timestamp": int(datetime.now().timestamp()),
+        "redirect_to": str(redirect_to),
         "callback": str(callback_url)
     }
 
