@@ -54,28 +54,3 @@ def sign_session(national_code: str,
 
     # Return the final payload
     return f"{payload_base64}.{signature_base64}"
-
-
-def sign_verification(token: str):
-    payload = {
-        "validation_token": str(token),
-    }
-
-    payload_json = json.dumps(payload).encode()
-
-    # Sign the payload
-    signature = private_key.sign(
-        data=payload_json,
-        padding=padding.PSS(
-            mgf=padding.MGF1(hashes.SHA256()),
-            salt_length=padding.PSS.MAX_LENGTH
-        ),
-        algorithm=hashes.SHA256()
-    )
-
-    # Encode the payload and signature
-    signature_base64 = base64.urlsafe_b64encode(signature).decode()
-    payload_base64 = base64.urlsafe_b64encode(payload_json).decode()
-
-    # Return the final payload
-    return f"{payload_base64}.{signature_base64}"
