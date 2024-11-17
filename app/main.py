@@ -107,11 +107,6 @@ async def create_session(request: SessionRequest, http_request: Request):
         raise HTTPException(status_code=500, detail="Internal server error")
 
 @app.post("/take_result")
-async def take_result(data: TakeResultResponse):
-    # if data and data.similarity is not None:
-    #     if not (0 <= data.attributes.similarity <= 1):
-    #         raise HTTPException(status_code=400, detail="Similarity must be between 0 and 1")
-
-    print(f"Received data from callback: {data.model_dump()}")
-
-    return {"message": "Data received successfully", "data": data.model_dump(exclude_unset=True)}
+async def take_result(data: dict):
+    print(f"Received data from callback: {data}")
+    return {"message": "Data received successfully"}
